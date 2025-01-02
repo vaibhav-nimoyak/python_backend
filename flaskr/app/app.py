@@ -21,4 +21,25 @@ def math():
     b = request.args.get('b')
     return jsonify({'result': int(a) + int(b)})
 
+@app.route('/form', methods=['GET'])
+def form_page():
+    return render_template('form.html', name="Developer")
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    name = request.form['name']
+    return f"Hello, {name}!"
+
+# TODO: Add a route for the contact page
+@app.route('/contact', methods=['GET'])
+def contact_page():
+    return render_template('contact.html')
+
+#TODO: Add a route for the customer service page
+@app.route('/customer_service', methods=['POST'])
+def customer_service():
+    """Handle form submission"""
+    pass
+
+
 app.run(port=5000)
